@@ -17,3 +17,15 @@ def sign_up(request):
 
 def home(request):
     return render(request, 'main/home.html')
+
+
+def projects(request):
+    return render(request, 'main/projects.html')
+
+
+def profile(request):
+    return render(request, 'main/view_profile.html')
+
+
+def post_project(request):
+    return render(request, 'main/post_project.html')
