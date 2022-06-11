@@ -1,0 +1,105 @@
+{% extends 'main/base.html' %}
+{% block content %}
+
+<!-- ======= Our Project Section ======= -->
+        <section id="portfolio" class="portfolio section-bg">
+            <div class="container">
+
+                <div class="section-title">
+                    <h2>Our Portfolio</h2>
+                    <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit
+                        sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias
+                        ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-12 d-flex justify-content-center">
+                        <ul id="portfolio-flters">
+                            <li data-filter="*" class="filter-active">All</li>
+                            <li data-filter=".filter-app">App</li>
+                            <li data-filter=".filter-card">Card</li>
+                            <li data-filter=".filter-web">Web</li>
+
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="row portfolio-container">
+
+                    <div class="col-lg-4 col-md-6 portfolio-item filter-app">
+                        <div class="portfolio-wrap">
+                            <img src="https://cdn.pixabay.com/photo/2021/11/30/08/24/strawberries-6834750__480.jpg"
+                                class="img-fluid" alt="">
+                            <div class="portfolio-info">
+                                <h4>App 1</h4>
+                                <p>App</p>
+                            </div>
+                            <div class="portfolio-links">
+                                <a href="https://cdn.pixabay.com/photo/2021/11/30/08/24/strawberries-6834750__480.jpg"
+                                    data-gallery="portfolioGallery"
+                                    class="portfolio-lightbox" title="App 1"><i class="bx bx-plus"></i></a>
+                                <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
+                                <a href="" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="bi bi-eye"style="font-size: 1.5rem;"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                      <div class="modal-dialog">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                          </div>
+                          <div class="modal-body">
+                            ...
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary">Save changes</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+
+
+                    <div class="col-lg-4 col-md-6 portfolio-item filter-web">
+                        <div class="portfolio-wrap">
+                            <img src="https://cdn.pixabay.com/photo/2021/11/30/08/24/strawberries-6834750__480.jpg"
+                                class="img-fluid" alt="">
+                            <div class="portfolio-info">
+                                <h4>Web 3</h4>
+                                <p>Web</p>
+                            </div>
+                            <div class="portfolio-links">
+                                <a href="https://cdn.pixabay.com/photo/2021/11/30/08/24/strawberries-6834750__480.jpg"
+                                    data-gallery="portfolioGallery"
+                                    class="portfolio-lightbox" title="Web 3"><i class="bx bx-plus"></i></a>
+                                <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6 portfolio-item filter-app">
+                        <div class="portfolio-wrap">
+                            <img src="https://cdn.pixabay.com/photo/2022/05/26/19/14/child-7223632__340.jpg"
+                                class="img-fluid" alt="">
+                            <div class="portfolio-info">
+                                <h4>App 2</h4>
+                                <p>App</p>
+                            </div>
+                            <div class="portfolio-links">
+                                <a href="https://cdn.pixabay.com/photo/2022/05/26/19/14/child-7223632__340.jpg"
+                                    data-gallery="portfolioGallery"
+                                    class="portfolio-lightbox" title="App 2"><i class="bx bx-plus"></i></a>
+                                <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </section><!-- End Our Project Section -->
+
+
+{% endblock %}
