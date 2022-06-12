@@ -13,11 +13,10 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 import os
 from pathlib import Path
 from decouple import config, Csv
-
+import cloudinary.api
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
@@ -31,7 +30,6 @@ DEBUG = config('DEBUG', default=False, cast=bool)
 
 ALLOWED_HOSTS = []
 
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -43,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'awardsapp',
     'bootstrap4',
+    'cloudinary',
 ]
 
 MIDDLEWARE = [
@@ -75,7 +74,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'awardsproject.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
@@ -100,7 +98,6 @@ else:
         )
     }
 
-
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
 
@@ -119,7 +116,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/4.0/topics/i18n/
 
@@ -130,7 +126,6 @@ TIME_ZONE = 'Africa/Nairobi'
 USE_I18N = True
 
 USE_TZ = True
-
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
@@ -144,3 +139,11 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 LOGIN_REDIRECT_URL = '/projects'
 LOGOUT_REDIRECT_URL = '/login'
+
+
+cloudinary.config(
+    cloud_name=config("CLOUD_NAME"),
+    api_key=config('API_KEY'),
+    api_secret=config("API_SECRET")
+
+)
