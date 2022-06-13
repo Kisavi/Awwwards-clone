@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
-from .forms import RegisterForm, UpdateProfileForm
+from .forms import RegisterForm, UpdateProfileForm, PostProjectForm
 
 
 # Create your views here.
@@ -38,4 +38,5 @@ def profile(request):
 
 
 def post_project(request):
-    return render(request, 'main/post_project.html')
+    project_form = PostProjectForm()
+    return render(request, 'main/post_project.html', {'project_form': project_form})

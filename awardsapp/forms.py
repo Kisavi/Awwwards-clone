@@ -21,7 +21,7 @@ class UpdateProfileForm(forms.ModelForm):
         fields = ['photo', 'bio']
 
 
-class PostProject(forms.ModelForm):
+class PostProjectForm(forms.ModelForm):
     name = forms.CharField(widget=forms.Textarea(attrs={'class': 'form-control'}))
     link = forms.URLField(widget=forms.URLField(attrs={'class': 'form-control'}))
     image = forms.ImageField(widget=forms.FileInput(attrs={'class': 'form-control-file'}))
