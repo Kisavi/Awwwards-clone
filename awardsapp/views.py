@@ -50,3 +50,6 @@ def profile(request):
 def post_project(request):
     project_form = PostProjectForm()
     return render(request, 'main/post_project.html', {'project_form': project_form})
+
+
+
