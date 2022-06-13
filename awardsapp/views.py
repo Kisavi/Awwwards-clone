@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
-from .forms import RegisterForm
+from django.contrib import messages
+from .forms import RegisterForm, UpdateProfileForm
 
 
 # Create your views here.
@@ -24,7 +25,16 @@ def projects(request):
 
 
 def profile(request):
-    return render(request, 'main/view_profile.html')
+    if request.method == 'POST':
+        profile_form = UpdateProfileForm(request.POST, request.FILES, instance=request.user.profile)
+
+        if profile_form.is_valid():
+            profile_form.save()
+            messages.success(request, 'Your profile is updated successfully')
+            return redirect(to='users-profile')
+    else:
+        profile_form = UpdateProfileForm(instance=request.user.profile)
+    return render(request, 'main/view_profile.html', {'profile_form': profile_form})
 
 
 def post_project(request):
