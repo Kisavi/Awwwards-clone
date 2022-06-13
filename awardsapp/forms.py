@@ -22,10 +22,10 @@ class UpdateProfileForm(forms.ModelForm):
 
 
 class PostProjectForm(forms.ModelForm):
-    name = forms.CharField(widget=forms.Textarea(attrs={'class': 'form-control'}))
-    link = forms.URLField(widget=forms.URLField(attrs={'class': 'form-control'}))
+    name = forms.TextInput(attrs={'class': 'form-control'})
+    link = forms.URLField()
     image = forms.ImageField(widget=forms.FileInput(attrs={'class': 'form-control-file'}))
-    description = forms.CharField(widget=forms.Textarea(attrs={'class': 'form-control', 'rows': 5}))
+    description = forms.CharField(widget=forms.Textarea(attrs={'class': 'form-control', 'rows': 5, 'cols': 20}))
     category = forms.CharField(widget=forms.Textarea(attrs={'class': 'form-control'}))
 
     class Meta:

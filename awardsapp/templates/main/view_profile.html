@@ -8,41 +8,43 @@
                 <div class="card-body p-1-9 p-sm-2-3 p-md-6 p-lg-7">
                     <div class="row align-items-center">
                         <div class="col-lg-6 mb-4 mb-lg-0">
-                            <img class="rounded-circle" style=" height: 230px; width: 230px;" src="{{ user.profile.photo.url }}" alt="...">
+                            <img class="rounded-circle" style=" height: 230px; width: 230px;"
+                                 src="{{ user.profile.photo.url }}" alt="...">
                         </div>
                         <div class="col-lg-6 px-xl-10">
                             <div class=" d-lg-inline-block py-1-9 px-1-9 px-sm-6 mb-1-9 rounded"
-                                style="padding: 2rem; background: #344341; margin-bottom: 1rem;min-width: 20rem;">
+                                 style="padding: 2rem; background: #344341; margin-bottom: 1rem;min-width: 20rem;">
                                 <h3 class="h2 text-white mb-0">{{ user.username }}</h3>
                                 <button type="button" class="btn btn-outline-light btn-sm mt-2" data-bs-toggle="modal"
-                                    data-bs-target="#exampleModal">Edit Profile</button>
+                                        data-bs-target="#exampleModal">Edit Profile
+                                </button>
                             </div>
                             <!-- Modal -->
                             <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-                                aria-hidden="true">
+                                 aria-hidden="true">
                                 <div class="modal-dialog modal-dialog-centered">
                                     <div class="modal-content">
                                         <div class="modal-header">
                                             <h5 class="modal-title" id="exampleModalLabel">Edit Profile</h5>
                                             <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                aria-label="Close"></button>
+                                                    aria-label="Close"></button>
                                         </div>
                                         <div class="modal-body">
                                             <form method="post" enctype="multipart/form-data">
-                                                 {% csrf_token %}
-                                                 <div class="form-row">
+                                                {% csrf_token %}
+                                                <div class="form-row">
                                                     <div class="col-md-5">
                                                         <div class="form-group">
 
-                        <label class="small mb-1">Change Profile picture:</label>
-                        {{ profile_form.photo }}
-                    </div>
-                    <label class="small mb-1">Bio:</label> {{ profile_form.bio }}
-                </div>
-            </div>
-            <hr>
-            <button type="submit" class="btn btn-dark btn-lg">Save Changes</button>
-            <button type="reset" class="btn btn-dark btn-lg">Reset</button>
+                                                            <label class="small mb-1">Change Profile picture:</label>
+                                                            {{ profile_form.photo }}
+                                                        </div>
+                                                        <label class="small mb-1">Bio:</label> {{ profile_form.bio }}
+                                                    </div>
+                                                </div>
+                                                <hr>
+                                                <button type="submit" class="btn btn-dark btn-lg">Save Changes</button>
+                                                <button type="reset" class="btn btn-dark btn-lg">Reset</button>
                                             </form>
                                         </div>
 
@@ -51,75 +53,81 @@
                             </div>
                             <ul class="list-unstyled mb-1-9">
                                 <li class="mb-2 mb-xl-3 display-28"><span
-                                        class="display-26 text-secondary me-2 font-weight-600">Bio:</span> {{ user.profile.bio}}
+                                        class="display-26 text-secondary me-2 font-weight-600">Bio:</span> {{
+                                    user.profile.bio}}
                                 </li>
-                                 <li class="mb-2 mb-xl-3 display-28"><span
+                                <li class="mb-2 mb-xl-3 display-28"><span
                                         class="display-26 text-secondary me-2 font-weight-600">Email:</span>
-                                    {{user.email}}</li>
+                                    {{user.email}}
+                                </li>
                                 <li class="mb-2 mb-xl-3 display-28"><span
                                         class="display-26 text-secondary me-2 font-weight-600">Projects:</span>
-                                    www.example.com</li>
+                                    www.example.com
+                                </li>
                             </ul>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
- <section id="portfolio" class="portfolio section-bg">
+        <section id="portfolio" class="portfolio section-bg">
             <div class="container">
                 <div class="row portfolio-container">
 
                     <div class="col-lg-4 col-md-6 portfolio-item filter-app">
                         <div class="portfolio-wrap">
                             <img src="https://cdn.pixabay.com/photo/2021/11/30/08/24/strawberries-6834750__480.jpg"
-                                class="img-fluid" alt="">
+                                 class="img-fluid" alt="">
                             <div class="portfolio-info">
                                 <h4>App 1</h4>
                                 <p>App</p>
                             </div>
                             <div class="portfolio-links">
                                 <a href="https://cdn.pixabay.com/photo/2021/11/30/08/24/strawberries-6834750__480.jpg"
-                                    data-gallery="portfolioGallery"
-                                    class="portfolio-lightbox" title="App 1"><i class="bx bx-plus"></i></a>
+                                   data-gallery="portfolioGallery"
+                                   class="portfolio-lightbox" title="App 1"><i class="bx bx-plus"></i></a>
                                 <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
-                                <a href="" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="bi bi-eye"style="font-size: 1.5rem;"></i></a>
+                                <a href="" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="bi bi-eye"
+                                                                                                    style="font-size: 1.5rem;"></i></a>
                             </div>
                         </div>
                     </div>
 
                     <!-- Modal -->
-                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                      <div class="modal-dialog">
-                        <div class="modal-content">
-                          <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                          </div>
-                          <div class="modal-body">
-                            ...
-                          </div>
-                          <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary">Save changes</button>
-                          </div>
+                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                         aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    ...
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close
+                                    </button>
+                                    <button type="button" class="btn btn-primary">Save changes</button>
+                                </div>
+                            </div>
                         </div>
-                      </div>
                     </div>
-
 
 
                     <div class="col-lg-4 col-md-6 portfolio-item filter-web">
                         <div class="portfolio-wrap">
                             <img src="https://cdn.pixabay.com/photo/2021/11/30/08/24/strawberries-6834750__480.jpg"
-                                class="img-fluid" alt="">
+                                 class="img-fluid" alt="">
                             <div class="portfolio-info">
                                 <h4>Web 3</h4>
                                 <p>Web</p>
                             </div>
                             <div class="portfolio-links">
                                 <a href="https://cdn.pixabay.com/photo/2021/11/30/08/24/strawberries-6834750__480.jpg"
-                                    data-gallery="portfolioGallery"
-                                    class="portfolio-lightbox" title="Web 3"><i class="bx bx-plus"></i></a>
+                                   data-gallery="portfolioGallery"
+                                   class="portfolio-lightbox" title="Web 3"><i class="bx bx-plus"></i></a>
                                 <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
                             </div>
                         </div>
@@ -128,22 +136,22 @@
                     <div class="col-lg-4 col-md-6 portfolio-item filter-app">
                         <div class="portfolio-wrap">
                             <img src="https://cdn.pixabay.com/photo/2022/05/26/19/14/child-7223632__340.jpg"
-                                class="img-fluid" alt="">
+                                 class="img-fluid" alt="">
                             <div class="portfolio-info">
                                 <h4>App 2</h4>
                                 <p>App</p>
                             </div>
                             <div class="portfolio-links">
                                 <a href="https://cdn.pixabay.com/photo/2022/05/26/19/14/child-7223632__340.jpg"
-                                    data-gallery="portfolioGallery"
-                                    class="portfolio-lightbox" title="App 2"><i class="bx bx-plus"></i></a>
+                                   data-gallery="portfolioGallery"
+                                   class="portfolio-lightbox" title="App 2"><i class="bx bx-plus"></i></a>
                                 <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
- </section>
+        </section>
     </div>
 </div>
 {% endblock %}
