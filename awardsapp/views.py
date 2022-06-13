@@ -52,4 +52,16 @@ def post_project(request):
     return render(request, 'main/post_project.html', {'project_form': project_form})
 
 
-
+def search_project(request):
+    if 'search-projects' in request.GET and request.GET['search-projects']:
+        name = request.GET.get('search-projects')
+        results = Project.search_project_by_category(name)
+        message = name
+        params = {
+            'results': results,
+            'message': message
+        }
+        return render(request, 'main/results.html', params)
+    else:
+        message = 'You did not make any selection'
+    return render(request, 'main/results.html', {'message': message})

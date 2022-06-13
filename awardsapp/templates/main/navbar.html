@@ -5,8 +5,8 @@
             <div class="logo">
                 <h1 class="text-light"><a href="index.html"><span>Shuffle</span></a></h1>
             </div>
-            <form class="d-flex">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <form class="d-flex" action="{% url 'search-project' %}">
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="search-projects">
 
             </form>
 
