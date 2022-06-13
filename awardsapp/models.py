@@ -91,4 +91,4 @@ class Project(models.Model):
         return projects
 
     def __str__(self):
-        return self.category
+        return self.name

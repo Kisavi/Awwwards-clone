@@ -1,9 +1,11 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from .forms import RegisterForm, UpdateProfileForm, PostProjectForm
+from .models import Project
 
 
 # Create your views here.
+
 
 def sign_up(request):
     if request.method == 'POST':
@@ -21,7 +23,9 @@ def home(request):
 
 
 def projects(request):
-    return render(request, 'main/projects.html')
+    projects = Project.projects()
+    context = {"projects": projects}
+    return render(request, 'main/projects.html', context)
 
 
 def profile(request):
