@@ -56,7 +56,8 @@ class Category(models.Model):
 
 
 class Project(models.Model):
-    author = models.ForeignKey(User, on_delete=models.CASCADE, default=1)
+    author = models.ForeignKey(Profile, on_delete=models.CASCADE, related_name='projects', default=1)
+    # user = models.ForeignKey(Profile, on_delete=models.CASCADE, related_name='projects', default=1)
     category = models.ForeignKey(Category, on_delete=models.SET_NULL, null=True)
     name = models.CharField(max_length=100, null=False, blank=False)
     link = models.URLField(blank=False)

@@ -29,6 +29,8 @@ def projects(request):
 
 
 def profile(request):
+    # projects = request.user.profile.projects.all()
+    projects = request.user.profile.projects.all()
     if request.method == 'POST':
         profile_form = UpdateProfileForm(request.POST, request.FILES, instance=request.user.profile)
 
@@ -38,7 +40,11 @@ def profile(request):
             return redirect(to='users-profile')
     else:
         profile_form = UpdateProfileForm(instance=request.user.profile)
-    return render(request, 'main/view_profile.html', {'profile_form': profile_form})
+    context = {
+        "projects": projects,
+        'profile_form': profile_form
+    }
+    return render(request, 'main/view_profile.html', context)
 
 
 def post_project(request):
