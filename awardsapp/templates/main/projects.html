@@ -1,77 +1,115 @@
 {% extends 'main/base.html' %}
 {% block content %}
+{% load ratings %}
 
 <!-- ======= Our Project Section ======= -->
-        <section id="portfolio" class="portfolio section-bg">
-            <div class="container">
+<section id="portfolio" class="portfolio section-bg">
+    <div class="container">
 
-                <div class="section-title">
-                    <h2>Posted Projects</h2>
-                    <p>The awards for design, creativity and innovation on the Internet.Discover the best agencies and professionals in Tech.
-                        Leading thinkers teach digital talent. We need your vote!!!</p>
-                </div>
+        <div class="section-title">
+            <h2>Posted Projects</h2>
+            <p>The awards for design, creativity and innovation on the Internet.Discover the best agencies and
+                professionals in Tech.
+                Leading thinkers teach digital talent. We need your vote!!!</p>
+        </div>
 
-                <div class="row">
-                    <div class="col-lg-12 d-flex justify-content-center">
-                        <ul id="portfolio-flters">
-                            <li data-filter="*" class="filter-active">
-                                <a href="{% url 'home-projects' %}">All</a>
-                            </li>
-<!--                            {% for category in categories %}-->
-                            <li data-filter=".filter-app">
-<!--                                <a href="{% url 'home-projects' %}?category={{category.name}}">{{category.name}}</a>-->
-                                <a href="{% url 'home-projects' %}?category={{category.name}}">{{ project.get_category_display }}</a>
-                            </li>
-<!--                            {% endfor %}-->
+        <div class="row">
+            <div class="col-lg-12 d-flex justify-content-center">
+                <ul id="portfolio-flters">
+                    <li data-filter="*" class="filter-active">
+                        <a href="{% url 'home-projects' %}">All</a>
+                    </li>
+                    <!--                            {% for category in categories %}-->
+                    <li data-filter=".filter-app">
+                        <!--                                <a href="{% url 'home-projects' %}?category={{category.name}}">{{category.name}}</a>-->
+                        <a href="{% url 'home-projects' %}?category={{category.name}}">{{ project.get_category_display
+                            }}</a>
+                    </li>
+                    <!--                            {% endfor %}-->
 
-                        </ul>
+                </ul>
+            </div>
+        </div>
+
+        <div class="row portfolio-container">
+            {% for project in projects %}
+            <div class="col-lg-4 col-md-6 portfolio-item filter-app">
+                <div class="portfolio-wrap">
+                    <img style="height:15.5rem; width:22.5rem;" src="{{ project.image.url }}"
+                         class="img-fluid" alt="">
+                    <div class="portfolio-info">
+                        <p>Posted by: <span class="fst-italic"><b>{{ project.author }}</b></span></p>
+                        <p>{{ project.category }}</p>
                     </div>
-                </div>
-
-                <div class="row portfolio-container">
-                    {% for project in projects %}
-                    <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-                        <div class="portfolio-wrap">
-                            <img src="{{ project.image.url }}"
-                                class="img-fluid" alt="">
-                            <div class="portfolio-info">
-                                <h4>{{ project.name }}</h4>
-                                <p>{{ project.category }}</p>
-                            </div>
-                            <div class="portfolio-links">
-                                <a href="{{ project.image.url }}"
-                                    data-gallery="portfolioGallery"
-                                    class="portfolio-lightbox" title="Landing page image"><i class="bx bx-plus"></i></a>
-                                <a href="{{ project.link }}" title="Live Link"><i class="bx bx-link"></i></a>
-                                <a href="" title="More details" data-bs-toggle="modal" data-bs-target="#exampleModal{{ project.id }}"><i class="bi bi-eye"style="font-size: 1.5rem;"></i></a>
-                            </div>
-                        </div>
+                    <div class="portfolio-links">
+                        <a href="{{ project.image.url }}"
+                           data-gallery="portfolioGallery"
+                           class="portfolio-lightbox" title="Landing page image"><i class="bx bx-plus"></i></a>
+                        <a href="{{ project.link }}" title="Live Link"><i class="bx bx-link"></i></a>
+                        <a href="" title="View project details" data-bs-toggle="modal"
+                           data-bs-target="#exampleModal{{ project.id }}"><i class="bi bi-eye"
+                                                                             style="font-size: 1.5rem;"></i></a>
+                        <a href="" title="Rate project" data-bs-toggle="modal"
+                           data-bs-target="#exampleModa"><i class="bx bx-star"></i></a>
                     </div>
-
-
-                    <!-- Modal -->
-                    <div class="modal fade" id="exampleModal{{ project.id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                      <div class="modal-dialog">
-                        <div class="modal-content">
-                          <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">{{ project.name }}</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                          </div>
-                          <div class="modal-body">
-                            <img src="{{ project.image.url }}"
-                                class="img-fluid" alt="">
-                          <hr>
-                              <p><b>Description:</b> {{ project.description }}</p>
-                               <p><b>Live link:</b> {{ project.link }}</p>
-                              <p class="text-muted fst-italic"><b>~ </b> {{project.pub_date}}</p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                 {% endfor %}
                 </div>
             </div>
-        </section><!-- End Our Project Section -->
+
+
+            <!--  Rating Modal -->
+            <div class="modal fade" id="exampleModa" tabindex="-1" aria-labelledby="exampleModalLabel"
+                 aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Rate Project</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <strong>
+                                <p>Rate Usability</p>
+                            </strong>
+                            {% ratings project %} <br> <br>
+                            <strong>
+                                <p>Rate Design</p>
+                            </strong>
+                            {% ratings project %} <br> <br>
+                            <strong>
+                                <p>Rate Content</p>
+                            </strong>
+                            {% ratings project %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal{{ project.id }}" tabindex="-1" aria-labelledby="exampleModalLabel"
+                 aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">{{ project.name }}</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <img src="{{ project.image.url }}"
+                                 class="img-fluid" alt="">
+                            <hr>
+                             <p><b>Category:</b> {{ project.category }}</p>
+                            <p><b>Description:</b> {{ project.description }}</p>
+                            <p><b>Live link:</b> <a class="text-primary" href="{{ project.link }}">{{ project.link }}</a></p>
+                            <p class="text-muted fst-italic"><b>~ </b> {{project.pub_date}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section><!-- End Our Project Section -->
 
 
 {% endblock %}
