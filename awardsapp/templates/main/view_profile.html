@@ -1,125 +1,141 @@
 {%extends 'main/base.html' %}
 {% load static %}
 {% block content %}
-<div class="container" style="margin-bottom: 7rem;">
-    <div class="row">
-        <div class="col-lg-12 mb-4 mb-sm-5">
-            <div class="card card-style1 border-0">
-                <div class="card-body p-1-9 p-sm-2-3 p-md-6 p-lg-7">
-                    <div class="row align-items-center">
-                        <div class="col-lg-6 mb-4 mb-lg-0">
-                            <img class="rounded-circle" style=" height: 230px; width: 230px;"
-                                 src="{{ user.profile.photo.url }}" alt="...">
-                        </div>
-                        <div class="col-lg-6 px-xl-10">
-                            <div class=" d-lg-inline-block py-1-9 px-1-9 px-sm-6 mb-1-9 rounded"
-                                 style="padding: 2rem; background: #344341; margin-bottom: 1rem;min-width: 20rem;">
-                                <h3 class="h2 text-white mb-0">{{ user.username }}</h3>
-                                <button type="button" class="btn btn-outline-light btn-sm mt-2" data-bs-toggle="modal"
-                                        data-bs-target="#exampleModal">Edit Profile
-                                </button>
+<section id="portfolio" class="portfolio section-bg">
+    <div class="container" style="margin-bottom: 0rem;">
+        <div class="row">
+            <div class="col-lg-12 mb-4 mb-sm-5">
+                <div class="card card-style1 border-0" style="background:#f2f5f4 !important;">
+                    <div class="card-body p-1-9 p-sm-2-3 p-md-6 p-lg-7">
+                        <div class="row align-items-center">
+                            <div class="col-lg-6 mb-4 mb-lg-0">
+                                <img class="rounded-circle" style=" height: 230px; width: 230px;"
+                                     src="{{ user.profile.photo.url }}" alt="...">
                             </div>
-                            <!-- Modal -->
-                            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-                                 aria-hidden="true">
-                                <div class="modal-dialog modal-dialog-centered">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="exampleModalLabel">Edit Profile</h5>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                    aria-label="Close"></button>
-                                        </div>
-                                        <div class="modal-body">
-                                            <form method="post" enctype="multipart/form-data">
-                                                {% csrf_token %}
-                                                <div class="form-row">
-                                                    <div class="col-md-5">
-                                                        <div class="form-group">
+                            <div class="col-lg-6 px-xl-10">
+                                <div class=" d-lg-inline-block py-1-9 px-1-9 px-sm-6 mb-1-9 rounded"
+                                     style="padding: 2rem; background: #344341; margin-bottom: 1rem;min-width: 20rem;">
+                                    <h3 class="h2 text-white mb-0">{{ user.username }}</h3>
+                                    <button type="button" class="btn btn-outline-light btn-sm mt-2"
+                                            data-bs-toggle="modal"
+                                            data-bs-target="#exampleModal">Edit Profile
+                                    </button>
+                                </div>
+                                <!-- Modal -->
+                                <div class="modal fade" id="exampleModal" tabindex="-1"
+                                     aria-labelledby="exampleModalLabel"
+                                     aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLabel">Edit Profile</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                        aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <form method="post" enctype="multipart/form-data">
+                                                    {% csrf_token %}
+                                                    <div class="form-row">
+                                                        <div class="col-md-5">
+                                                            <div class="form-group">
 
-                                                            <label class="small mb-1">Change Profile picture:</label>
-                                                            {{ profile_form.photo }}
+                                                                <label class="small mb-1">Change Profile
+                                                                    picture:</label>
+                                                                {{ profile_form.photo }}
+                                                            </div>
+                                                            <label class="small mb-1">Bio:</label> {{ profile_form.bio
+                                                            }}
                                                         </div>
-                                                        <label class="small mb-1">Bio:</label> {{ profile_form.bio }}
                                                     </div>
-                                                </div>
-                                                <hr>
-                                                <button type="submit" class="btn btn-dark btn-lg">Save Changes</button>
-                                                <button type="reset" class="btn btn-dark btn-lg">Reset</button>
-                                            </form>
-                                        </div>
+                                                    <hr>
+                                                    <button type="submit" class="btn btn-dark btn-lg">Save Changes
+                                                    </button>
+                                                    <button type="reset" class="btn btn-dark btn-lg">Reset</button>
+                                                </form>
+                                            </div>
 
+                                        </div>
                                     </div>
                                 </div>
+                                <ul class="list-unstyled mb-1-9">
+                                    <li class="mb-2 mb-xl-3 display-28"><span
+                                            class="display-26 text-secondary me-2 font-weight-600">Bio:</span>
+                                        {{ user.profile.bio }}
+                                    </li>
+                                    <li class="mb-2 mb-xl-3 display-28"><span
+                                            class="display-26 text-secondary me-2 font-weight-600">Email:</span>
+                                        {{user.email}}
+                                    </li>
+                                    <li class="mb-2 mb-xl-3 display-28"><span
+                                            class="display-26 text-secondary me-2 font-weight-600">Projects:</span>
+                                        {{user.profile.projects.count}}
+                                    </li>
+                                </ul>
                             </div>
-                            <ul class="list-unstyled mb-1-9">
-                                <li class="mb-2 mb-xl-3 display-28"><span
-                                        class="display-26 text-secondary me-2 font-weight-600">Bio:</span>
-                                    {{ user.profile.bio }}
-                                </li>
-                                <li class="mb-2 mb-xl-3 display-28"><span
-                                        class="display-26 text-secondary me-2 font-weight-600">Email:</span>
-                                    {{user.email}}
-                                </li>
-                                <li class="mb-2 mb-xl-3 display-28"><span
-                                        class="display-26 text-secondary me-2 font-weight-600">Projects:</span>
-                                    {{user.profile.projects.count}}
-                                </li>
-                            </ul>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-         <h4 class="text-center">Your Projects</h4>
-        <section id="portfolio" class="portfolio section-bg">
-            <div class="container">
-                <div class="row portfolio-container">
+            <hr>
+            <br><br>
 
-                    {% for project in projects %}
-                    <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-                        <div class="portfolio-wrap">
-                            <img src="{{ project.image.url }}"
-                                class="img-fluid" alt="">
-                            <div class="portfolio-info">
-                                <h4>{{ project.name }}</h4>
-                                <p>{{ project.category }}</p>
-                            </div>
-                            <div class="portfolio-links">
-                                <a href="{{ project.image.url }}"
-                                    data-gallery="portfolioGallery"
-                                    class="portfolio-lightbox" title="Landing page image"><i class="bx bx-plus"></i></a>
-                                <a href="{{ project.link }}" title="Live Link"><i class="bx bx-link"></i></a>
-                                <a href="" title="More details" data-bs-toggle="modal" data-bs-target="#exampleModal{{ project.id }}"><i class="bi bi-eye"style="font-size: 1.5rem;"></i></a>
-                            </div>
+
+            <h4 class="text-center text-muted mb-5">Your Projects</h4><br>
+
+
+            <div class="row portfolio-container">
+
+                {% for project in projects %}
+                <div class="col-lg-4 col-md-6 portfolio-item filter-app">
+                    <div class="portfolio-wrap">
+                        <img src="{{ project.image.url }}"
+                             class="img-fluid" alt="">
+                        <div class="portfolio-info">
+                            <h4>{{ project.name }}</h4>
+                            <p>{{ project.category }}</p>
+                        </div>
+                        <div class="portfolio-links">
+                            <a href="{{ project.image.url }}"
+                               data-gallery="portfolioGallery"
+                               class="portfolio-lightbox" title="Landing page image"><i class="bx bx-plus"></i></a>
+                            <a href="{{ project.link }}" title="Live Link"><i class="bx bx-link"></i></a>
+                            <a href="" title="More details" data-bs-toggle="modal"
+                               data-bs-target="#exampleModal{{ project.id }}"><i class="bi bi-eye"
+                                                                                 style="font-size: 1.5rem;"></i></a>
                         </div>
                     </div>
+                </div>
 
 
-                    <!-- Modal -->
-                    <div class="modal fade" id="exampleModal{{ project.id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                      <div class="modal-dialog">
+                <!-- Modal -->
+                <div class="modal fade" id="exampleModal{{ project.id }}" tabindex="-1"
+                     aria-labelledby="exampleModalLabel"
+                     aria-hidden="true">
+                    <div class="modal-dialog">
                         <div class="modal-content">
-                          <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">{{ project.name }}</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                          </div>
-                          <div class="modal-body">
-                            <img src="{{ project.image.url }}"
-                                class="img-fluid" alt="">
-                          <hr>
-                              <p><b>Description:</b> {{ project.description }}</p>
-                               <p><b>Live link:</b> {{ project.link }}</p>
-                              <p class="text-muted fst-italic"><b>~ </b> {{project.pub_date}}</p>
-                          </div>
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">{{ project.name }}</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <img src="{{ project.image.url }}"
+                                     class="img-fluid" alt="">
+                                <hr>
+                                <p><b>Description:</b> {{ project.description }}</p>
+                                <p><b>Live link:</b> {{ project.link }}</p>
+                                <p class="text-muted fst-italic"><b>~ </b> {{project.pub_date}}</p>
+                            </div>
                         </div>
-                      </div>
                     </div>
-                    {% empty %}
-                    <h3 class="text-muted text-center">You have not posted any project yet.</h3>
-                 {% endfor %}
                 </div>
+                {% empty %}
+                <h3 class="text-muted text-center">You have not posted any project yet.</h3>
+                {% endfor %}
             </div>
-        </section>
+
+        </div>
     </div>
-</div>
+</section>
+
 {% endblock %}

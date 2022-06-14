@@ -1,8 +1,9 @@
 {% extends 'main/base.html' %}
 {% block content %}
-<div class="container" style="margin-bottom: 5.1rem; background-color: pink;">
+ <section id="portfolio" class="portfolio section-bg" style="min-height: 60vh">
+<div class="container" style="margin-bottom: 5.1rem;">
     <div class="row">
-        <section id="portfolio" class="portfolio section-bg" style="min-height: 60vh">
+
             <div class="container">
                 {% if results %}
                 <h5 class="text-muted">Found {{ results|length }} project{{ results|pluralize }}</h5>
@@ -60,7 +61,8 @@
                 </div>
                 {% endif %}
             </div>
-        </section>
+
     </div>
 </div>
+      </section>
 {% endblock %}
