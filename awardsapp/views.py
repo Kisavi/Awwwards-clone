@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from .forms import RegisterForm, UpdateProfileForm, PostProjectForm
-from .models import Project
+from .models import Project, Category
 
 
 # Create your views here.
@@ -23,8 +23,16 @@ def home(request):
 
 
 def projects(request):
-    projects = Project.projects()
-    context = {"projects": projects}
+    category = request.GET.get('category')
+    if category == None:
+        projects = Project.projects()
+    else:
+        projects = Project.search_project_by_category(category)
+    categories = Category.objects.all()
+    context = {
+        "projects": projects,
+        "categories": categories
+    }
     return render(request, 'main/projects.html', context)
 
 
@@ -48,8 +56,23 @@ def profile(request):
 
 
 def post_project(request):
-    project_form = PostProjectForm()
-    return render(request, 'main/post_project.html', {'project_form': project_form})
+    categories = Category.objects.all()
+    if request.method == 'POST':
+        project_form = PostProjectForm(request.POST, request.FILES)
+        print('project_form:', project_form)
+        if project_form.is_valid():
+            print(Project.category.name)
+            project = project_form.save(commit=False)
+            project.author = request.user.profile
+            project.save()
+            return redirect('home-projects')
+    else:
+        project_form = PostProjectForm()
+        params = {
+            'categories': categories,
+            'project_form': project_form
+        }
+    return render(request, 'main/post_project.html', params)
 
 
 def search_project(request):

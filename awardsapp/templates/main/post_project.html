@@ -9,10 +9,11 @@
                 <form method="POST" action="" enctype="multipart/form-data">
                     {% csrf_token %}
                     <div class="form-group m-3">
-
+                         <label>Select a category</label>
                         <select name="category" class="form-control">
-                            <option value="none">Select Category...</option>
+                            {% for category in categories %}
                             <option value="{{category.id}}">{{category.name}}</option>
+                            {% endfor %}
                         </select>
                     </div>
                     <div class="form-group m-3">
