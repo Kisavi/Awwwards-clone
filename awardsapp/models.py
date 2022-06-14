@@ -31,34 +31,43 @@ class Profile(models.Model):
         return self.user.username
 
 
-class Category(models.Model):
-    name = models.CharField(max_length=100, null=False, blank=False)
+# class Category(models.Model):
+#     name = models.CharField(max_length=100, null=False, blank=False)
+#
+#     def save_category(self):
+#         self.save()
+#
+#     @classmethod
+#     def get_category_by_id(cls, id):
+#         category = cls.objects.get(id=id)
+#         return category
+#
+#     @classmethod
+#     def update_category(cls, cat):
+#         category = cls.get_category_by_id(cat.id)
+#         category.name = cat.name
+#         category.save_category()
+#
+#     def delete_category(self):
+#         self.delete()
+#
+#     def __str__(self):
+#         return self.name
 
-    def save_category(self):
-        self.save()
 
-    @classmethod
-    def get_category_by_id(cls, id):
-        category = cls.objects.get(id=id)
-        return category
-
-    @classmethod
-    def update_category(cls, cat):
-        category = cls.get_category_by_id(cat.id)
-        category.name = cat.name
-        category.save_category()
-
-    def delete_category(self):
-        self.delete()
-
-    def __str__(self):
-        return self.name
+CATEGORY_CHOICES = (
+    ('django', 'DJANGO'),
+    ('java', 'JAVA'),
+    ('flask', 'FLASK'),
+    ('python', 'PYTHON'),
+)
 
 
 class Project(models.Model):
     author = models.ForeignKey(Profile, on_delete=models.CASCADE, related_name='projects', default=1)
     # user = models.ForeignKey(Profile, on_delete=models.CASCADE, related_name='projects', default=1)
-    category = models.ForeignKey(Category, on_delete=models.SET_NULL, null=True)
+    # category = models.ForeignKey(Category, on_delete=models.SET_NULL, null=True, blank=False)
+    category = models.CharField(max_length=6, choices=CATEGORY_CHOICES, default='python')
     name = models.CharField(max_length=100, null=False, blank=False)
     link = models.URLField(blank=False)
     pub_date = models.DateTimeField(auto_now_add=True)
@@ -83,12 +92,12 @@ class Project(models.Model):
 
     @classmethod
     def search_project_by_category(cls, category):
-        projects = cls.objects.filter(category__name__icontains=category)
+        projects = cls.objects.filter(category__icontains=category)
         return projects
 
     @classmethod
     def filter_by_category(cls, category):
-        projects = cls.objects.filter(category__name__icontains=category)
+        projects = cls.objects.filter(category__icontains=category)
         return projects
 
     def __str__(self):

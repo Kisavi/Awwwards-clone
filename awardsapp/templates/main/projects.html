@@ -17,11 +17,12 @@
                             <li data-filter="*" class="filter-active">
                                 <a href="{% url 'home-projects' %}">All</a>
                             </li>
-                            {% for category in categories %}
+<!--                            {% for category in categories %}-->
                             <li data-filter=".filter-app">
-                                <a href="{% url 'home-projects' %}?category={{category.name}}">{{category.name}}</a>
+<!--                                <a href="{% url 'home-projects' %}?category={{category.name}}">{{category.name}}</a>-->
+                                <a href="{% url 'home-projects' %}?category={{category.name}}">{{ project.get_category_display }}</a>
                             </li>
-                            {% endfor %}
+<!--                            {% endfor %}-->
 
                         </ul>
                     </div>
@@ -35,7 +36,7 @@
                                 class="img-fluid" alt="">
                             <div class="portfolio-info">
                                 <h4>{{ project.name }}</h4>
-                                <p>{{ project.category }}</p>
+                                <p>{{ project.get_category_display }}</p>
                             </div>
                             <div class="portfolio-links">
                                 <a href="{{ project.image.url }}"

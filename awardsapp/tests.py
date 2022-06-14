@@ -27,7 +27,7 @@ class CategoryTestCase(TestCase):
         self.assertTrue(len(categories) > 0)
 
     def test_get_category_by_id(self):
-        """Test case to check we can access the id of a saved image in the database."""
+        """Test case to check we can access the id of a saved category in the database."""
         self.category.save_category()
         category = Category.get_category_by_id(self.category.id)
         self.assertTrue(category)
