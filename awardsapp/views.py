@@ -22,21 +22,30 @@ def sign_up(request):
 
 
 def home(request):
-    return render(request, 'main/home.html')
+    projects = Project.projects()
+    return render(request, 'main/home.html', {"projects": projects})
 
 
 def projects(request):
-    category = request.GET.get('category')
-    if category == None:
-        projects = Project.projects()
-    else:
-        projects = Project.search_project_by_category(category)
-    # categories = Category.objects.all()
+    projects = Project.projects()
     context = {
-        "projects": projects,
-        # "categories": categories
+         "projects": projects,
     }
     return render(request, 'main/projects.html', context)
+
+
+# def projects(request):
+#     category = request.GET.get('category')
+#     if category == None:
+#         projects = Project.projects()
+#     else:
+#         projects = Project.search_project_by_category(category)
+#     # categories = Category.objects.all()
+#     context = {
+#         "projects": projects,
+#         # "categories": categories
+#     }
+#     return render(request, 'main/projects.html', context)
 
 
 def profile(request):
@@ -71,25 +80,6 @@ def post_project(request):
         'form': form
     }
     return render(request, 'main/post_project.html', context)
-
-
-# def post_project(request):
-#     categories = Category.objects.all()
-#     if request.method == 'POST':
-#         project_form = PostProjectForm(request.POST, request.FILES)
-#         if project_form.is_valid():
-#             project = project_form.save(commit=False)
-#             project.author = request.user.profile
-#             project.category = Category.objects.get(id=project_form['category'])
-#             project.save()
-#             return redirect('home-projects')
-#     else:
-#         project_form = PostProjectForm()
-#     params = {
-#         'categories': categories,
-#         'project_form': project_form
-#     }
-#     return render(request, 'main/post_project.html', params)
 
 
 def search_project(request):
