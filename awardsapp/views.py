@@ -1,7 +1,10 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from .forms import RegisterForm, UpdateProfileForm, PostProjectForm
-from .models import Project
+from .models import Project, Profile
+from rest_framework.response import Response
+from rest_framework.views import APIView
+from .serializer import ProjectSerializer, ProfileSerializer
 
 
 # Create your views here.
@@ -102,3 +105,12 @@ def search_project(request):
     else:
         message = 'You did not make any selection'
     return render(request, 'main/results.html', {'message': message})
+
+
+class ProjectList(APIView):
+    def get(self, request, format=None):
+        all_projects = Project.objects.all()
+        serializers = ProjectSerializer(all_projects, many=True)
+        return Response(serializers.data)
+
+
