@@ -68,7 +68,7 @@ def post_project(request):
     else:
         form = PostProjectForm()
     context = {
-            'form': form
+        'form': form
     }
     return render(request, 'main/post_project.html', context)
 
@@ -114,3 +114,8 @@ class ProjectList(APIView):
         return Response(serializers.data)
 
 
+class ProfileList(APIView):
+    def get(self, request, format=None):
+        all_profiles = Profile.objects.all()
+        serializers = ProfileSerializer(all_profiles, many=True)
+        return Response(serializers.data)

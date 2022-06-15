@@ -9,5 +9,7 @@ urlpatterns = [
    path('post-project', views.post_project),
    path('search-project', views.search_project, name='search_project'),
    path('ratings/', include('star_ratings.urls', namespace='ratings')),
+   path('api/projects', views.ProjectList.as_view()),
+   path('api/profiles', views.ProfileList.as_view()),
 
 ]
