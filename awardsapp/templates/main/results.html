@@ -1,5 +1,6 @@
 {% extends 'main/base.html' %}
 {% block content %}
+{% load ratings %}
  <section id="portfolio" class="portfolio section-bg" style="min-height: 60vh">
 <div class="container" style="margin-bottom: 5.1rem;">
     <div class="row">
@@ -19,7 +20,7 @@
                             <img src="{{ project.image.url }}"
                                  class="img-fluid" alt="">
                             <div class="portfolio-info">
-                                <h4>{{ project.name }}</h4>
+                                <p>Posted by: <span class="fst-italic"><b>{{ project.author }}</b></span></p>
                                 <p>{{ project.category }}</p>
                             </div>
                             <div class="portfolio-links">
@@ -30,9 +31,40 @@
                                 <a href="" title="More details" data-bs-toggle="modal"
                                    data-bs-target="#exampleModal{{ project.id }}"><i class="bi bi-eye"
                                                                                      style="font-size: 1.5rem;"></i></a>
+                                <a href="" title="Rate project" data-bs-toggle="modal"
+                           data-bs-target="#exampleModa{{ project.id }}"><i class="bx bx-star"></i></a>
                             </div>
                         </div>
                     </div>
+
+                    <!--  Rating Modal -->
+            <div class="modal fade" id="exampleModa{{ project.id }}" tabindex="-1" aria-labelledby="exampleModalLabel"
+                 aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Rate Project</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <strong>
+                                <p>Rate Usability</p>
+                            </strong>
+                            {% ratings project %} <br> <br>
+                            <strong>
+                                <p>Rate Design</p>
+                            </strong>
+                            {% ratings project %} <br> <br>
+                            <strong>
+                                <p>Rate Content</p>
+                            </strong>
+                            {% ratings project %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
 
 
                     <!-- Modal -->
@@ -51,7 +83,7 @@
                                          class="img-fluid" alt="">
                                     <hr>
                                     <p><b>Description:</b> {{ project.description }}</p>
-                                    <p><b>Live link:</b> {{ project.link }}</p>
+                                    <p><b>Live link:</b> <a class="text-primary" href="{{ project.link }}">{{ project.link }}</a></p>
                                     <p class="text-muted fst-italic"><b>~ </b> {{project.pub_date}}</p>
                                 </div>
                             </div>
