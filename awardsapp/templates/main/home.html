@@ -14,15 +14,15 @@
     {% block styles %}
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
 
     <!-- icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
 
     <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
 
     <!--    Ratings css-->
     <link rel="stylesheet" href="{% static 'star-ratings/css/star-ratings.css' %}">
@@ -30,11 +30,11 @@
 
     <!-- Google Fonts -->
     <link
-        href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Roboto:300,300i,400,400i,500,500i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
-        rel="stylesheet">
+            href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Roboto:300,300i,400,400i,500,500i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+            rel="stylesheet">
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
     </script>
 
     <!--    Rating js-->
@@ -46,51 +46,94 @@
 
 <body>
 
-    <!-- ======= Hero Section ======= -->
-    <section id="hero">
-        <div class="hero-container">
-            <div id="heroCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="5000">
+<!-- ======= Hero Section ======= -->
+<section id="hero">
+    <div class="hero-container">
 
-
-
-                <div class="carousel-inner" role="listbox">
-
-                    <!-- Slide 1 -->
-                    <div class="carousel-item active">
-                        <div class="carousel-background"><img
-                                src="images/slide/slide-1.jpg"
-                                alt=""></div>
-                        <div class="carousel-container">
-                            <div class="carousel-content">
-                                <h2 class="animate__animated animate__fadeInDown">Welcome to <span>Shuffle</span></h2>
-                                <p class="animate__animated animate__fadeInUp">Ut velit est quam dolor ad a aliquid qui
-                                    aliquid. Sequi ea ut et est quaerat sequi nihil ut aliquam. Occaecati alias dolorem
-                                    mollitia ut. Similique ea voluptatem. Esse doloremque accusamus repellendus deleniti
-                                    vel. Minus et tempore modi architecto.</p>
-                                <a href="/login"
-                                    class="btn-get-started animate__animated animate__fadeInUp scrollto">Post Project</a>
-                            </div>
+        <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="https://images.pexels.com/photos/411207/pexels-photo-411207.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                         class="d-block w-100" alt="...">
+                    <div class="carousel-container">
+                        <div class="carousel-content">
+                            <h2 class="animate__animated animate__fadeInDown">Welcome to <span>Ourds</span></h2>
+                            <p class="animate__animated animate__fadeInUp fst-italic">“Throw yourself into some work you
+                                believe in with all your heart, live for it, die for it, and you will find happiness
+                                that you had thought could never be yours.”</p>
+                            <p class="animate__animated animate__fadeInUp fst-italic">– Dale Carnegie</p>
+                            <a href="/login"
+                               class="btn-get-started animate__animated animate__fadeInUp scrollto">Post Project</a>
                         </div>
                     </div>
-
-
                 </div>
-
-
-
+                <div class="carousel-item">
+                    <img src="https://images.pexels.com/photos/6022438/pexels-photo-6022438.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" class="d-block w-100" alt="...">
+                    <div class="carousel-container">
+                        <div class="carousel-content">
+                            <h2 class="animate__animated animate__fadeInDown">Welcome to <span>Ourds</span></h2>
+                            <p class="animate__animated animate__fadeInUp fst-italic">“Throw yourself into some work you
+                                believe in with all your heart, live for it, die for it, and you will find happiness
+                                that you had thought could never be yours.”</p>
+                            <p class="animate__animated animate__fadeInUp fst-italic">– Dale Carnegie</p>
+                            <a href="/login"
+                               class="btn-get-started animate__animated animate__fadeInUp scrollto">Post Project</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src=https://images.pexels.com/photos/2526105/pexels-photo-2526105.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" class="d-block w-100" alt="...">
+                    <div class="carousel-container">
+                        <div class="carousel-content">
+                            <h2 class="animate__animated animate__fadeInDown">Welcome to <span>Ourds</span></h2>
+                            <p class="animate__animated animate__fadeInUp fst-italic">“Throw yourself into some work you
+                                believe in with all your heart, live for it, die for it, and you will find happiness
+                                that you had thought could never be yours.”</p>
+                            <p class="animate__animated animate__fadeInUp fst-italic">– Dale Carnegie</p>
+                            <a href="/login"
+                               class="btn-get-started animate__animated animate__fadeInUp scrollto">Post Project</a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-    </section>
-    <!-- End Hero -->
 
-    <!-- ======= navbar ======= -->
-    {% include 'main/projects.html' %}
+        <!--        <div id="heroCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="5000">-->
 
 
-       {% block scripts %}
-        <script src="{% static 'js/scripts.js' %}"></script>
-        {% endblock %}
+        <!--            <div class="carousel-inner" role="listbox">-->
 
+        <!--                &lt;!&ndash; Slide 1 &ndash;&gt;-->
+        <!--                <div class="carousel-item active">-->
+        <!--                    <div class="carousel-background"><img-->
+        <!--                            src="https://images.pexels.com/photos/2526105/pexels-photo-2526105.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"-->
+        <!--                            alt=""></div>-->
+        <!--                    <div class="carousel-container">-->
+        <!--                        <div class="carousel-content">-->
+        <!--                            <h2 class="animate__animated animate__fadeInDown">Welcome to <span>Ourds</span></h2>-->
+        <!--                            <p class="animate__animated animate__fadeInUp fst-italic">“Throw yourself into some work you-->
+        <!--                                believe in with all your heart, live for it, die for it, and you will find happiness-->
+        <!--                                that you had thought could never be yours.”</p>-->
+        <!--                            <p class="animate__animated animate__fadeInUp fst-italic">– Dale Carnegie</p>-->
+        <!--                            <a href="/login"-->
+        <!--                               class="btn-get-started animate__animated animate__fadeInUp scrollto">Post Project</a>-->
+        <!--                        </div>-->
+        <!--                    </div>-->
+        <!--                </div>-->
+
+        <!--            </div>-->
+        <!--        </div>-->
+    </div>
+</section>
+<!-- End Hero -->
+
+<!-- ======= navbar ======= -->
+{% include 'main/projects.html' %}
+
+
+{% block scripts %}
+<script src="{% static 'js/scripts.js' %}"></script>
+{% endblock %}
 
 
 </body>
