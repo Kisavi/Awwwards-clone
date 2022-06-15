@@ -49,7 +49,7 @@ Denis Kisavi
 - User can logout of the application.
 
 
-## <a href="">Live preview of the site</a>
+## <a href="https://ourds.herokuapp.com/">Live preview of the site</a>
 
 ## Set up instructions and installations
 
